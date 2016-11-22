@@ -6,7 +6,9 @@
       <sourceFolder url="file://$MODULE_DIR$/src/Cards/Card.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Cards/NumericCard.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/Cards/FigureCard.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Cards/CardRequest.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/reviiyot.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/CardRequest.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/Hand.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/Deck.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/Game.h" isTestSource="false" />

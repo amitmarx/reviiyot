@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Hand.h"
+#include "CardRequest.h"
 
 using namespace std;
 
@@ -11,6 +12,7 @@ private:
 	const string name;
 public:
 	string getName();   //Returns the name of the player
+	virtual CardRequest playTurn();
 };
 
 class PlayerType1 : public Player {  //For strategy 1

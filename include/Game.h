@@ -14,8 +14,8 @@ private:
 	vector<Player *> players;  //The list of the players
 	Deck deck;                 //The deck of the game
 public:
-	Game(char* configurationFile);
-	void init();
+	Game(char* configurationFile); //Read all configuration and creates objects
+	void init(); // Deal cards to players
 	void play();
 	void printState();        //Print the state of the game as described in the assignment.
 	void printWinner();       //Print the winner of the game as describe in the assignment.
