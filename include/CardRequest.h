@@ -10,19 +10,22 @@
 
 class CardRequest {
 private:
-    Card reauestedCard;
+    Card* requestedCard;
 public:
-    int getCard();
+    Card* getCard(){
+        return requestedCard;
+    };
+    virtual ~CardRequest();
 };
 
-class InOrderCardRequest : CardRequest {
+class InOrderCardRequest : public CardRequest {
 private:
     int position;
 public:
     int getPosition();
 };
 
-class TakeFromHeighestCardRequest  : CardRequest{
+class TakeFromHeighestCardRequest  : public CardRequest{
 };
 
 #endif //REVIIYOT_CARDREQUEST_H
