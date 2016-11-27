@@ -9,29 +9,47 @@ using namespace std;
 
 class Player : public Hand {
 private:
-	std::string name; //did amit do it or did they and can i change it??
+	const string name;
+
+protected:
+	int playerToAsk;
 	int location;
+
 public:
-	Player::Player(std::string * n, int loc);
+	Player(string n, int loc);
 	string getName();   //Returns the name of the player
+	virtual CardRequest* playTurn()=0;
+	void increaseLocationToAskByOne();
 };
 
-class PlayerType1 : public Player {  //For strategy 1
-    virtual TakeFromHeighestCardRequest playTurn();
+class PlayerType1 : public Player {
+
+public://For strategy 1
+	PlayerType1(string n, int loc) : Player(n,loc){ };
+    virtual CardRequest* playTurn();
+
 };
 
 class PlayerType2 : public Player {  //For strategy 2
-    virtual TakeFromHeighestCardRequest playTurn();
+
+public:
+	PlayerType2(string n, int loc) : Player(n,loc){ };
+    virtual CardRequest* playTurn();
 };
 
-class PlayerType3 : public Player {  //For strategy 3
-    virtual InOrderCardRequest playTurn();
-    int lastRequest(); //returns the id of the last player from whom this player asked for a card
+class PlayerType3 : public Player {
+private:
+
+public://For strategy 3
+	PlayerType3(string n, int loc) : Player(n,loc){ };
+    virtual CardRequest* playTurn();//returns the id of the last player from whom this player asked for a card
 };
 
 class PlayerType4 : public Player {  //For strategy 4
-    virtual InOrderCardRequest playTurn();
-    int lastRequest(); //returns the id of the last player from whom this player asked for a card
+private:
+public :
+	PlayerType4(string n, int loc) : Player(n,loc){ };
+    virtual CardRequest* playTurn();
 };
 
 #endif

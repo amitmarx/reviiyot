@@ -11,9 +11,7 @@ using namespace std;
 class Deck {
 private:
 	stack<Card*> cards;
-
 	Card *createCard(string cardStr) const;
-	Shape findShape(char &s) const;
 	Figure findFigure(char &s) const;
 
 public:

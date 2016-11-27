@@ -12,3 +12,9 @@ string NumericCard::toString() {
     return to_string(number) + Card::getShapeFirstLetter();
 }
 
+NumericCard::NumericCard(const NumericCard & c) :Card(c){
+    number = c.number;
+}
+
+
+

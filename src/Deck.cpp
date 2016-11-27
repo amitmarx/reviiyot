@@ -45,12 +45,14 @@ void Deck::initDeck(string deck) {
         string cardStr = deck.substr(i+1,wordLength);
         cards.push(createCard(cardStr));
         lastLetter=i-1;
+        }
     }
-}
+    string cardStr = deck.substr(0,lastLetter+1);
+    cards.push(createCard(cardStr));
 }
 
 Card *Deck::createCard(string cardStr) const {
-    Shape shape = findShape(cardStr[cardStr.length()-1]);
+    Shape shape = Card::findShape(cardStr[cardStr.length()-1]);
     int i=0;
     int sum=0;
     while(cardStr[i]>='0' && cardStr[i]<='9'){
@@ -69,18 +71,7 @@ Card *Deck::createCard(string cardStr) const {
     return returnValue;
 }
 
-Shape Deck::findShape(char &s) const {
-    switch(s){
-        case 'C':
-            return Shape ::Club;
-        case 'D':
-            return Shape ::Diamond;
-        case 'H':
-            return Shape ::Heart;
-        default:
-            return Shape ::Spade;
-    }
-}
+
 
 Figure Deck::findFigure(char &s) const {
     switch(s){

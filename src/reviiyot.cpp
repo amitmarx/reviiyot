@@ -10,20 +10,19 @@ int main(int argc, char **argv) {
     char* configurationFile = "/home/amitmarx/dev/reviiyot/config/config1.txt";
 
 	Game game = Game(configurationFile);
+	game.init();
+ 	Game initializedGame = game;
+ 	game.play();
 
-//	game.init();
-// 	Game initializedGame = game;
-// 	game.play();
-//
-//	cout << std::endl;
-// 	game.printWinner();
-//	game.printNumberOfTurns();
-//	cout << "----------" << endl;
-//	cout<<"Initial State:"<<endl;
-//  	initializedGame.printState();
-//	cout<<"----------"<<endl;
-//	cout<<"Final State:"<<endl;
-//	game.printState();
+	cout << std::endl;
+ 	game.printWinner();
+	game.printNumberOfTurns();
+	cout << "----------" << endl;
+	cout<<"Initial State:"<<endl;
+  	initializedGame.printState();
+	cout<<"----------"<<endl;
+	cout<<"Final State:"<<endl;
+	game.printState();
 	return 0;
 }
 

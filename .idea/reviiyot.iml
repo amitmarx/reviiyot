@@ -2,16 +2,23 @@
 <module type="CPP_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/src/Deck.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Cards/Card.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Cards/NumericCard.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Cards/FigureCard.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/Cards/CardRequest.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Hand.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/reviiyot.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Cards/CardRequest.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Cards/NumericCard.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Cards/Card.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Cards/FigureCard.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Game.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Deck.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Players/Player.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Players/PlayerType1.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Players/PlayerType3.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Players/PlayerType4.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/Players/PlayerType2.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/CardRequest.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/Hand.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/include/Deck.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/Game.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/include/Deck.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/Card.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/main.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/include/Player.h" isTestSource="false" />

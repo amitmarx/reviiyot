@@ -49,7 +49,6 @@ void Game::setHighest(string basic_string) {
 
 void Game::setDeck(string basic_string) {
     deck.initDeck(basic_string);
-    cout<< deck.toString();
 }
 
 void Game::setPlayer(string str,int position) {
@@ -80,17 +79,13 @@ while(!isThereAWinner()){
     Player* p = players[turns%players.size()];
     CardRequest * request = p->playTurn();
     Player * playerToAsk = findPlayerToAsk(request,turns%players.size());
-    Card* card = request->getCard();
+    string cardValue = request->getValue();
     if(isVerbal){
         cout<<"Turn "<<turns+1<<endl;
         printState();
-        //remove type form card.toString
-        string cardValue = card->toString();
-        cardValue = cardValue.substr(0,cardValue.length()-1);
-
-        cout<<p->getName()<<" asked "<< playerToAsk->getName()<< "for the value "<<cardValue;
+        cout<<p->getName()<<" asked "<< playerToAsk->getName()<< " for the value "<<cardValue<<endl;
     }
-    vector<Card*> cards = playerToAsk->tryGetCards(*card);
+    vector<Card*> cards = playerToAsk->tryGetCards(cardValue);
 
     if( cards.size()>0) {
         for (int x = 0; x < cards.size(); x++) {
@@ -156,15 +151,22 @@ bool Game::isThereAWinner() {
 Player *Game::findPlayerToAsk(CardRequest *request,int playerPosition) {
     if(InOrderCardRequest * inOrderReq =
             dynamic_cast<InOrderCardRequest*>(request)){
-        return players[inOrderReq->getPosition()];
+        int playerToAsk =inOrderReq->getPosition() % players.size();
+        if(playerToAsk==playerPosition){
+            playerToAsk++;
+            playerToAsk = playerToAsk % players.size();
+            players[playerPosition]->increaseLocationToAskByOne();
+        }
+        return players[playerToAsk];
     }
-    int numOfCards =0;
+
+    int maxNumOfCards =0;
     int pos=0;
     for(int i=0; i<players.size();i++)
     {
-        if(i!=playerPosition && numOfCards< players[i]->getNumberOfCards()){
+        if(i!=playerPosition && maxNumOfCards<= players[i]->getNumberOfCards()){
             pos=i;
-            numOfCards=players[i]->getNumberOfCards();
+            maxNumOfCards=players[i]->getNumberOfCards();
         }
     }
     return players[pos];
@@ -198,6 +200,25 @@ void Game::printEndState() {
     cout<<"Final state:"<<endl;
     printState();
 }
+
+Game::Game(const Game &obj) {
+    this->deck=obj.deck;
+    this->highest = obj.highest;
+    this->initState = obj.initState;
+    this->isVerbal = obj.isVerbal;
+    this->turns = obj.turns;
+
+    //TODO: Change this!!!!!
+    this->players = obj.players;
+}
+
+void Game::printNumberOfTurns() {
+    cout<<"Turn "<<turns+1<<endl;
+}
+
+
+
+
 
 
 

@@ -17,6 +17,7 @@ private:
 	int highest;
 	string initState;
 	int turns=0;
+
 	bool isThereAWinner();
 	void setVerbal(string basic_string);
 	void setHighest(string basic_string);

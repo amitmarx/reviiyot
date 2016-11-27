@@ -20,3 +20,15 @@ string FigureCard::getFigureFirstLetter(){
     }
 }
 
+Figure FigureCard::getFigure() {
+    return figure;
+}
+
+FigureCard::FigureCard(const FigureCard & c) : Card(c) {
+    figure = c.figure;
+}
+
+
+
+
+
