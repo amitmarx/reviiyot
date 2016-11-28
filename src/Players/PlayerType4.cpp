@@ -12,3 +12,7 @@ CardRequest* PlayerType4::playTurn() {
 
     return response;
 }
+
+Player* PlayerType4::clone() {
+    return new PlayerType4(*this);
+}

@@ -15,11 +15,15 @@ private:
 	Figure findFigure(char &s) const;
 
 public:
+	Deck(){};
+	Deck(const Deck &otherDeck);
+	virtual ~Deck();
+	Deck& operator=(const Deck& otherDeck);
+
 	void initDeck(string deck);
 	Card* fetchCard();   //Returns the top card of the deck and remove it from the deck
 	int getNumberOfCards(); // Get the number of cards in the deck
 	string toString(); // Return the cards in top-to-bottom order in a single line, cards are separated by a space ex: "12S QD AS 3H"
-	~Deck();
 };
 
 #endif

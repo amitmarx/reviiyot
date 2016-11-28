@@ -17,8 +17,10 @@ protected:
 
 public:
 	Player(string n, int loc);
+	Player(const Player& p);
 	string getName();   //Returns the name of the player
 	virtual CardRequest* playTurn()=0;
+	virtual Player* clone()=0;
 	void increaseLocationToAskByOne();
 };
 
@@ -26,30 +28,34 @@ class PlayerType1 : public Player {
 
 public://For strategy 1
 	PlayerType1(string n, int loc) : Player(n,loc){ };
+	PlayerType1(PlayerType1& p):Player(p){};
     virtual CardRequest* playTurn();
-
+	Player* clone();
 };
 
 class PlayerType2 : public Player {  //For strategy 2
 
 public:
 	PlayerType2(string n, int loc) : Player(n,loc){ };
-    virtual CardRequest* playTurn();
+	PlayerType2(PlayerType2& p):Player(p){};
+	virtual CardRequest* playTurn();
+	Player* clone();
 };
 
 class PlayerType3 : public Player {
-private:
-
 public://For strategy 3
 	PlayerType3(string n, int loc) : Player(n,loc){ };
-    virtual CardRequest* playTurn();//returns the id of the last player from whom this player asked for a card
+	PlayerType3(PlayerType3& p):Player(p){};
+	virtual CardRequest* playTurn();
+	Player* clone();
 };
 
 class PlayerType4 : public Player {  //For strategy 4
-private:
-public :
+public:
 	PlayerType4(string n, int loc) : Player(n,loc){ };
-    virtual CardRequest* playTurn();
+	PlayerType4(PlayerType4& p):Player(p){};
+	virtual CardRequest* playTurn();
+	Player* clone();
 };
 
 #endif

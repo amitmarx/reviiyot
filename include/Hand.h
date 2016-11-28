@@ -15,6 +15,8 @@ private:
 	vector<Card*> inHand;
 public:
 	Hand();
+	Hand(const Hand &otherHand);
+	virtual ~Hand();
 	bool addCard(Card &card);
 	bool removeCard(Card &card);
 	vector<Card*> tryGetCards(string value);

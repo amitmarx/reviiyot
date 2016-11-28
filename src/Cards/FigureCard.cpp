@@ -28,6 +28,12 @@ FigureCard::FigureCard(const FigureCard & c) : Card(c) {
     figure = c.figure;
 }
 
+Card *FigureCard::clone() {
+    return new FigureCard(*this);
+}
+
+
+
 
 
 

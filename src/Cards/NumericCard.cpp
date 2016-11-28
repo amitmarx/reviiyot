@@ -16,5 +16,11 @@ NumericCard::NumericCard(const NumericCard & c) :Card(c){
     number = c.number;
 }
 
+Card *NumericCard::clone() {
+    return new NumericCard(*this);
+}
+
+
+
 
 

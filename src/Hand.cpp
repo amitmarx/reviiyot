@@ -6,11 +6,23 @@
 #include "../include/Hand.h"
 
 Hand::Hand(){
-}; //constructor
+};
+Hand::Hand(const Hand &otherHand) {
+
+    for(int i=0;i<otherHand.inHand.size();i++){
+        inHand.push_back(otherHand.inHand[i]->clone());
+    }
+}
 
 int Hand::getNumberOfCards(){
     return inHand.size();
 };
+Hand::~Hand() {
+    for(int i=0; i<inHand.size();i++){
+        delete(inHand[i]);
+    }
+    inHand.clear();
+}
 
 std::vector<Card*> Hand::tryGetCards(string value){
     std::string compare =value;
@@ -60,28 +72,28 @@ string Hand::toString() {
     for (int i = 0; i < inHand.size(); i++) {
         returnStr += inHand[i]->toString() + " ";
     }
-    return returnStr;
+    return returnStr.substr(0,returnStr.size()-1);
 }
 
 void Hand::remove4ofAKind() {
     int counter=1;
 
-    for(int i=0;i<inHand.size()-1;i++){
-        if(inHand[i]->isValueEqual(*inHand[i+1])){
+    for(int i=1;i<inHand.size();i++) {
+        if (inHand[i]->isValueEqual(*inHand[i - 1])) {
             counter++;
         }
-        else{
-            counter=1;
+        else {
+            counter = 1;
         }
-        if(counter==4){
-            for(int x=i-2;x<=i+1;x++){
-                delete (inHand[0]);
-                inHand.erase(inHand.begin());
+        if (counter == 4) {
+            for (int x = i - 3; x <= i; x++) {
+                delete (inHand[x]);
             }
-            i-=3;
+            inHand.erase(inHand.begin() + (i - 3), inHand.begin() + i+1);
+            i -= 3;
+            counter = 1;
         }
     }
 }
-
 
 

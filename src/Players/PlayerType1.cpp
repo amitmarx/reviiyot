@@ -26,3 +26,6 @@ CardRequest* PlayerType1::playTurn() {
     returnVal = returnVal.substr(0,returnVal.size()-1);
     return new TakeFromHighestCardRequest(returnVal);
 }
+Player* PlayerType1::clone() {
+    return new PlayerType1(*this);
+}

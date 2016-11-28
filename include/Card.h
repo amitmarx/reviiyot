@@ -28,8 +28,9 @@ protected:
 public:
 	Card(Shape s);
 	Card(const Card & c);
-    virtual string toString() = 0; //Returns the string representation of the card "<value><shape>" exp: "12S" or "QD"
-    virtual ~Card();
+	virtual ~Card();
+	virtual string toString() = 0; //Returns the string representation of the card "<value><shape>" exp: "12S" or "QD"
+	virtual Card* clone()=0;
 	int compareTo(Card& other);
 	bool isValueEqual(Card& other);
 	static Shape findShape(char &s);
@@ -45,6 +46,8 @@ private:
 public:
     FigureCard(Shape shape, Figure figure );
 	FigureCard(const FigureCard & c);
+	virtual ~FigureCard(){};
+	Card* clone();
 	virtual string toString() override;
 	Figure getFigure();
 
@@ -52,13 +55,13 @@ public:
 
 class NumericCard : public Card {
 private:
-    NumericCard(int num, Shape s);
-
     int number;
 public:
+	NumericCard(Shape s, int number);
+	NumericCard(const NumericCard& c );
+	virtual ~NumericCard(){};
 	virtual string toString() override;
-    NumericCard(Shape s, int number);
-	NumericCard(const NumericCard & c);
+	Card* clone();
 };
 
 #endif

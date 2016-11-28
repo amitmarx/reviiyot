@@ -15,7 +15,6 @@ private:
 	Deck deck;                 //The deck of the game
 	bool isVerbal;
 	int highest;
-	string initState;
 	int turns=0;
 
 	bool isThereAWinner();
@@ -23,9 +22,7 @@ private:
 	void setHighest(string basic_string);
 	void setDeck(string basic_string);
 	void setPlayer(string basic_string,int position);
-	Player *findPlayerToAsk(CardRequest *request);
 	Player *findPlayerToAsk(CardRequest *request, int playerPosition);
-	string stateString();
 
 public:
 	Game(char* configurationFile); //Read all configuration and creates objects
@@ -36,9 +33,8 @@ public:
 	void printState();        //Print the state of the game as described in the assignment.
 	void printWinner();       //Print the winner of the game as describe in the assignment.
 	void printNumberOfTurns(); //Print the number of played turns at any given time.
-	~Game();
+	virtual ~Game();
 
-	void printEndState();
 };
 
 #endif

@@ -13,8 +13,10 @@ private:
     string requestedValue;
 public:
     CardRequest(string reqValue);
-    string getValue();
+    CardRequest(const CardRequest& req);
     virtual ~CardRequest(){ };
+    virtual CardRequest* clone()=0;
+    string getValue() const;
 };
 
 class InOrderCardRequest : public CardRequest {
@@ -22,6 +24,8 @@ private:
     int position;
 public:
     InOrderCardRequest(string reqValue, int pos);
+    InOrderCardRequest(const InOrderCardRequest& inOr);
+    CardRequest* clone();
     int getPosition();
     virtual ~InOrderCardRequest(){ };
 };
@@ -29,6 +33,8 @@ public:
 class TakeFromHighestCardRequest  : public CardRequest{
 public:
     TakeFromHighestCardRequest(string reqValue ): CardRequest(reqValue) { };
+    TakeFromHighestCardRequest(const TakeFromHighestCardRequest& req ): CardRequest(req) { };
+    CardRequest* clone();
     virtual ~TakeFromHighestCardRequest(){ };
 };
 

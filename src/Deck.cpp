@@ -3,6 +3,7 @@
 //
 
 #include "../include/Deck.h"
+#include <queue>
 
 Card* Deck::fetchCard() {
     Card * returnVal = nullptr;
@@ -92,6 +93,39 @@ Deck::~Deck() {
         cards.pop();
     }
 }
+
+Deck:: Deck(const Deck &otherDeck) {
+    stack<Card*> tempStack= otherDeck.cards;
+
+    stack<Card*> reversedStack;
+    while (!tempStack.empty()){
+        reversedStack.push(tempStack.top()->clone());
+        tempStack.pop();
+    }
+    while(!reversedStack.empty()){
+        cards.push(reversedStack.top());
+        reversedStack.pop();
+    }
+
+}
+
+Deck &Deck::operator=(const Deck &otherDeck) {
+    stack<Card*> tempStack= otherDeck.cards;
+
+    stack<Card*> reversedStack;
+    while (!tempStack.empty()){
+        reversedStack.push(tempStack.top()->clone());
+        tempStack.pop();
+    }
+    while(!reversedStack.empty()){
+        cards.push(reversedStack.top());
+        reversedStack.pop();
+    }
+}
+
+
+
+
 
 
 

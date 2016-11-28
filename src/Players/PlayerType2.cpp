@@ -21,9 +21,14 @@ CardRequest* PlayerType2::playTurn() {
             }
             counter=1;
         }
-
+    }
+    if(counter<counterMin){
+        cardAppearedLeast = inHand[inHand.size()-1];
     }
     string returnVal = cardAppearedLeast->toString();
     returnVal = returnVal.substr(0,returnVal.size()-1);
     return new TakeFromHighestCardRequest(returnVal);
+}
+Player* PlayerType2::clone() {
+    return new PlayerType2(*this);
 }

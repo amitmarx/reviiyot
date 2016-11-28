@@ -13,3 +13,6 @@ CardRequest* PlayerType3::playTurn() {
 
     return response;
 }
+Player* PlayerType3::clone() {
+    return new PlayerType3(*this);
+}

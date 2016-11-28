@@ -4,10 +4,9 @@
 
 #include "../../include/Player.h"
 
-Player::Player(string n, int loc):name(n) {
-    location=loc;
-    playerToAsk=0;
+Player::Player(string n, int loc):name(n),location(loc),playerToAsk(0) {
 }
+
 
 string Player::getName() {
     return name;
@@ -16,3 +15,11 @@ string Player::getName() {
 void Player::increaseLocationToAskByOne() {
         playerToAsk++;
 }
+
+Player::Player(const Player &p):Hand(p),name(p.name),location(p.location),playerToAsk(p.playerToAsk) {
+}
+
+
+
+
+

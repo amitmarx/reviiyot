@@ -7,7 +7,7 @@ int main(int argc, char **argv) {
 
 	//char* configurationFile = argv[1];
 
-    char* configurationFile = "/home/amitmarx/dev/reviiyot/config/config1.txt";
+    char* configurationFile = "/home/amitmarx/dev/reviiyot/config/testeasy";
 
 	Game game = Game(configurationFile);
 	game.init();

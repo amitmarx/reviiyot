@@ -83,14 +83,14 @@ while(!isThereAWinner()){
     if(isVerbal){
         cout<<"Turn "<<turns+1<<endl;
         printState();
-        cout<<p->getName()<<" asked "<< playerToAsk->getName()<< " for the value "<<cardValue<<endl;
+        cout<<p->getName()<<" asked "<< playerToAsk->getName()<< " for the value "<<cardValue<<endl<<endl;
     }
     vector<Card*> cards = playerToAsk->tryGetCards(cardValue);
 
     if( cards.size()>0) {
         for (int x = 0; x < cards.size(); x++) {
-            p->addCard(*cards[x]);
             playerToAsk->removeCard(*cards[x]);
+            p->addCard(*cards[x]);
         }
         if (playerToAsk->getNumberOfCards() > 0) {
             for (int x = 0; x < cards.size() && deck.getNumberOfCards() > 0; x++) {
@@ -104,25 +104,19 @@ while(!isThereAWinner()){
             p->addCard(*deck.fetchCard());
         }
     }
+    delete request;
     turns++;
 }
-    printEndState();
+    turns--;
 }
 
 void Game::printState() {
-    cout<< stateString();
-}
-std::string Game::stateString() {
-    string s="";
-    s+= "Deck: "+deck.toString()+ "\n";
+    cout<<"Deck: "<<deck.toString()<<endl;
     for(int i=0; i<players.size();i++){
         Player* p =players[i];
-        s+=p->getName()+": "+p->toString()+"\n";
+        cout<<p->getName()<<": "<<p->toString()<<endl;
     }
-    return s;
 }
-
-
 
 void Game::init() {
     for(int i=0; i<players.size();i++){
@@ -130,13 +124,13 @@ void Game::init() {
             players[i]->addCard(*deck.fetchCard());
         }
     }
-    this->initState = stateString();
 }
 
 Game::~Game() {
     for(int i=0; i<players.size();i++){
         delete players[i];
     }
+    players.clear();
 }
 
 bool Game::isThereAWinner() {
@@ -181,43 +175,32 @@ void Game::printWinner() {
     }
     string names =winners[0]->getName();
     for(int x=1; x<winners.size();x++){
-        names+= "and " + winners[x]->getName();
+        names+= " and " + winners[x]->getName();
     }
     if(winners.size()>1) {
 
-        cout<<"***** The winners are: "<<names<<" *****";
+        cout<<"***** The winners are: "<<names<<" *****"<<endl;
     }
     else{
-        cout<<"***** The winner is: "<<names<<" *****";
+        cout<<"***** The Winner is: "<<names<<" *****"<<endl;
     }
 }
 
-void Game::printEndState() {
-    printWinner();
-    cout<<endl<<"Number of turns: "<<turns+1<<endl<<"----------"<<endl;
-
-    cout<<"Initial state:"<<endl<<initState<<endl<<"----------"<<endl;
-    cout<<"Final state:"<<endl;
-    printState();
-}
 
 Game::Game(const Game &obj) {
-    this->deck=obj.deck;
+    this->deck=Deck(obj.deck);
     this->highest = obj.highest;
-    this->initState = obj.initState;
     this->isVerbal = obj.isVerbal;
     this->turns = obj.turns;
 
-    //TODO: Change this!!!!!
-    this->players = obj.players;
+    for(int i=0;i<obj.players.size();i++){
+        this->players.push_back(obj.players[i]->clone());
+    }
 }
 
 void Game::printNumberOfTurns() {
-    cout<<"Turn "<<turns+1<<endl;
+    cout<<"Number of turns: "<<turns+1<<endl;
 }
-
-
-
 
 
 
