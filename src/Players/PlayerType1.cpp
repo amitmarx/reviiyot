@@ -15,12 +15,15 @@ CardRequest* PlayerType1::playTurn() {
             counter++;
         }
         else{
+            if(counter>=counterMax){
+                counterMax = counter;
+                cardAppearedMost = inHand[i];
+            }
             counter=1;
         }
-        if(counter>=counterMax){
-            counterMax = counter;
-            cardAppearedMost = inHand[i];
-        }
+    }
+    if(counter>=counterMax){
+        cardAppearedMost = inHand[inHand.size()-1];
     }
     string returnVal = cardAppearedMost->toString();
     returnVal = returnVal.substr(0,returnVal.size()-1);
